@@ -1,0 +1,121 @@
+# Day 12 - File  Content, RDS Skeleton, Rolling, Update, Backup
+
+## Ansible -Ensible - Ensure File With Content
+
+---
+- name: Create config file for Pathnex
+  hosts: all
+  become: yes
+
+
+  tasks:
+    - name: Write content to file
+      copy:
+        dest: /etc/pathnex.cong
+	content: |
+	  Welcome to Pathnex DevOps Training
+	  Today is Day 12
+
+
+## Terraform - RDS skeleton
+
+
+resource "aws_db_instance" "PathnexRDS" {
+   allocated_storage        = 20
+   engine                   = "mysql"
+   instance_class           = "db.t3.micro"
+   name                     = "pathnexdb"
+   username                 = "admin"
+   password                 = "password123"
+   skip_final_snapshot      = true
+  }
+
+
+
+
+ ## Kubernetes - Rulling Update Strategy
+
+ apiVersion: apps/v1
+ kind: Deployment
+ metadata:
+   name: pathnex-rulling
+ spec:
+   replicas: 3
+   strategy:
+      tyoe: RollingUpdate
+      rullingUpdate:
+        maxUnailable: 1
+ selector:
+   matchLabls:
+     app: null
+   template:
+     metadata:
+        labels:
+	   app: null
+     spec:
+       containers:
+          - name: web
+	    image: nginx
+
+
+## Shell Script - Backup Directory
+
+#!/bin/bash
+
+
+SOURCE="/var/log"
+DEST="/backup/pathnex-$(date +%F).tag.gz"
+
+
+tar -czf $DEST $SOURCE
+echo "Backup created at: $DEST"
+
+
+# Multi-branch Pipelines
+
+
+
+## Jenkins Pipeline - Multi-branch
+You will learn to **handle multiple branches in Jenkins pipelines**.
+
+
+pipeline {
+    agent any
+    environment {
+         INSTITUTE_NAME = "Pathnex"
+    }
+    stages {
+        stage('Checkout') {
+	    steps   {
+	       checkout scm
+	     }
+	 }
+    }
+}
+
+
+
+## GitLab CI - Branch Specific Jobs
+You will learn how to **run jobs for specific branches in GitLab CI**
+
+stages:
+  - build
+
+
+  build-main:
+    stage: build
+    image: maven:3.8.1-jdk-17
+    script:
+       - mvn clean compile
+    only:
+       - main
+  build-dev:
+    stage: build
+    image: maven:3.8.1-jdk-17
+    script:
+       - mvn clean compile
+    only:
+      -mvn clean compile
+    only:
+      - dev
+
