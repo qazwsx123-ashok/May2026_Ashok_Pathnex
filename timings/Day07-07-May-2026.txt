@@ -1,0 +1,14 @@
+## What i did today
+
+3 hr AWS Live class on teams
+4 hr Learned about AWS, cloud services, cloud platform, types of instances, EBS   volume, AMI, Marketplace, IAM, Differnece between Authentication, Authorizatio  n, MFA, EC2 Instances, EC2 , doing chatGPT, getting femiliar about AWS.
+2 hr Linux practice
+2 hr for speaking
+
+
+
+
+Tomorrow task
+3 hr live class on teams
+4 hr revision of class , chatGPT 
+2 hr linux Practice

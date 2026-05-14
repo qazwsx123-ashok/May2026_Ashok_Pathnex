@@ -1,0 +1,103 @@
+# Day 07 -SPED TYPING
+
+Rewrite all four from scratch:
+
+1. Ansible: Install nginx
+
+## Ansible Task - Install Nginx on Pathnex Server
+
+---
+- name: Install Nginx on Pathnex server
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install nginx 
+      yum:
+        name: nginx
+	state: present
+
+
+## Terraform Task - Create EC2 (c5.xlarge)
+
+
+provieder "aws"
+   region = "us-east-1"
+}
+
+resource "aws_instance" "PathnexEC2" {
+  ami            = "ami-0abcd1234abcd1234"
+  instance_type = "c5.xlarge"
+
+  tags = {
+    Name = "Pathnex-EC2"
+  }
+}
+
+
+
+## Kubernetes Task - Create Nginx Pod
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pathnex-pod
+spec:
+  containers:
+    - name: web
+      image: nginx:latest
+      ports: 
+        - containerPort: 80
+
+
+## Shell Script - Print Date & Hostname
+
+#!/bin/bash
+echo "Date: $(date)"
+echo "Hostname": $(hostname)"
+
+
+# Parameterized Builds
+
+## Jenkins Pipeline - Parameterized
+You will how to create ** create parameterized builds in Jenkins**.
+
+
+pipeline {
+   agent any
+   parameters {
+       string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Deployment Environment')
+    }
+    environment {
+         INSTITUTE_NAME = "Pathnex"
+    }
+    stages {
+        stage('Checkeout') {
+	   steps {
+	       git url: 'https://github.com/Pathnex/sample-java-app.git"
+	    }
+	 }
+	 stage('Deploy') {
+	     steps {
+	         sh 'echo "Deploying to $ENVIRONMENT by $INSTITUTE_NAME"'
+	     }
+	  }
+     }
+ }
+
+
+ ## GitLab CI - Parametrized via Variables
+ You will learn how to **use variables to parameterize GitLab jobs**.
+
+ stages:
+   - deploy
+ variables:
+    INSTITUTE_NAME: "Pathnex"
+    ENVIRONMENT: "dev"
+
+ deploy:
+    stage: deploy
+    image: alpine:latest
+    script:
+       -echo "Deploying to $ENVIRONMENT by $INSTITUTE_NAME"
+
