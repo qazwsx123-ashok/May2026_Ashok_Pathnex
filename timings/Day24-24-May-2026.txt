@@ -1,0 +1,17 @@
+# What i did today
+4 hr Ansible configuration, Terraform Practice
+3 hr EC2, EKS, Helm, linux command
+3 hr Coding practice
+2 hr speaking practice
+
+
+
+
+
+
+# What to do Tommorow
+3 hr live class
+4 hr practice for the live class on youtube
+4 hr practical of class
+2 hr coding practice
+2 hr if time left for speaking
