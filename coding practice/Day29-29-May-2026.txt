@@ -1,5 +1,5 @@
 Day 29 — Final Project Setup and Configuration
- Ansible — Complete Deployment Setup
+  Ansible — Complete Deployment Setup
 - name: Complete Deployment Setup
   hosts: all
   become: yes
@@ -18,7 +18,7 @@ resource "aws_instance" "pathnex_app" {
   subnet_id     = aws_subnet.pathnex_subnet.id
   security_groups = [aws_security_group.pathnex_sg.name]
 }
- Kubernetes — Deploy Full Application Stack
+  Kubernetes — Deploy Full Application Stack
 apiVersion: apps/v1
 kind: Deployment
 metadata:

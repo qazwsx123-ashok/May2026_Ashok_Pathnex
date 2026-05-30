@@ -1,7 +1,7 @@
 # What i did today
 2 hr live session class
 3 hr revision of class SSL/TLS
-3 hr EC2, EKS, Terraform practice
+3 hr EC2, EKS, Terraform practice, CI/CD pipelines
 3 hr Coding practice
 2 hr speaking practice
 
